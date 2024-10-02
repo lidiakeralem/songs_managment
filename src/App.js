@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home';
+import Navbar from './Components/Navbar';
+// import { WorkoutsContextProvider } from './context/WorkoutContext';
+
+// Create the router using createBrowserRouter
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <>
+        {/* <WorkoutsContextProvider> */}
+        <Navbar />
+        <div className="pages">
+          <Home />
+        </div>
+        {/* </WorkoutsContextProvider> */}
+      </>
+    ),
+  },
+]);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Use RouterProvider to provide the router to the application */}
+      <RouterProvider router={router} />
     </div>
   );
 }
